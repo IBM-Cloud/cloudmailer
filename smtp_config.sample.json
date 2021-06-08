@@ -1,0 +1,8 @@
+{
+    "server": {
+        "host": "smtp.example.com",
+        "port" : 465,
+        "id": "security@example.com",
+        "password": "strong-password"
+    }
+}

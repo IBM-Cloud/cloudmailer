@@ -1,0 +1,9 @@
+{
+    "email": {
+        "sender": "Security <security@example.com>",
+        "receiver": "alerts@example.com",
+        "subject": "Urgent: New security findings",
+        "text": "plain text version of email",
+        "html": "<html>HTML version of email</html>"
+    }
+}
