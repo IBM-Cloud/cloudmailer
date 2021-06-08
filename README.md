@@ -3,7 +3,7 @@ Use a simple IBM Cloud Functions action to send out emails via SMTP. Pass in the
 For ease of use, bind the server configuration to the action and only pass in the email to send.
 
 
-### Deploy
+## Deploy
 
 Use the IBM Cloud CLI and the Cloud Functions plugin to deploy the action. Log in to IBM Cloud, set the namespace and then run:
 
@@ -19,6 +19,7 @@ ibmcloud fn action update cloudmailer/sendEmail   -P smtp_config.sendgrid.json
 
 Be aware that typically the port 25 is blocked. Many email providers are using ports like 465 or 587.
 
+## Send emails
 
 ### Send emails using the CLI
 
@@ -33,7 +34,21 @@ To send out an email using another SMTP server configuration, you can pass in bo
 ibmcloud fn action invoke cloudmailer/sendEmail -r  -P email.json -P smtp_config.myserver.json
 ```
 
+### Send emails using the API
 
+You can [invoke the sendMail action via API](https://cloud.ibm.com/apidocs/functions#invokeaction). For testing, use the tool **curl**. See the documentation for sample code in some programming languages. Calling an API function requires a valid IBM Cloud IAM access token. In the following example, we first obtain the token and assign its value to an environment variable. Thereafter, we use the token for a curl to send a POST request to invoke the action. The email properties are passed in from a file.
+
+```
+export TOKEN=$(ibmcloud iam oauth-tokens --output json | jq -r .iam_token)
+
+curl -X POST --url 'https://us-south.functions.cloud.ibm.com/api/v1/namespaces/04a49bd4-xxxx-xxxx-xxxx-07be0c9b732b/actions/cloudmailer/sendEmail?blocking=true&result=true' -H 'Accept: application/json' -H "Authorization: $TOKEN"  -H 'content-type: application/json' -d @email.json
+```
+### Expose the sendMail action as web action
+
+Another option is to turn the action into a web action. See the [IBM Cloud Functions documentation on web actions](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-actions_web) for details.
+
+## SMTP server configuration
+Some notes on common scenarios.
 
 ### Use with your custom domain and SMTP server
 
