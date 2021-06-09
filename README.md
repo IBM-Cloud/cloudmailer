@@ -1,5 +1,5 @@
 # Send emails using IBM Cloud Functions
-Use a simple IBM Cloud Functions action to send out emails via SMTP. Pass in the SMTP server configuration and the email using JSON objects. 
+Use a simple [IBM Cloud Functions](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-getting-started) action to send out emails via SMTP. Pass in the SMTP server configuration and the email using JSON objects. 
 For ease of use, bind the server configuration to the action and only pass in the email to send.
 
 The following screenshot shows an email based on [this sample properties](email.blog.json).
@@ -8,7 +8,7 @@ The following screenshot shows an email based on [this sample properties](email.
 
 ## Deploy
 
-Use the IBM Cloud CLI and the Cloud Functions plugin to deploy the action. Log in to IBM Cloud, set the namespace and then run:
+Use the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started) and the [Cloud Functions plugin](https://cloud.ibm.com/docs/cli?topic=cloud-functions-cli-plugin-functions-cli) to deploy the action. Log in to IBM Cloud, [set the namespace](https://cloud.ibm.com/docs/cli?topic=cloud-functions-cli-plugin-functions-cli#cli_namespace_target) and then run:
 
 ```sh
 ibmcloud fn deploy -m Cloudmailer.yaml
