@@ -2,6 +2,9 @@
 Use a simple IBM Cloud Functions action to send out emails via SMTP. Pass in the SMTP server configuration and the email using JSON objects. 
 For ease of use, bind the server configuration to the action and only pass in the email to send.
 
+The following screenshot shows an email based on [this sample properties](email.blog.json).
+
+![sample email](images/20210609_Sample_Email.png)
 
 ## Deploy
 
@@ -21,9 +24,12 @@ Be aware that typically the port 25 is blocked. Many email providers are using p
 
 ## Send emails
 
+To send an email, invoke the action and pass in the JSON object with the email properties. Use [email.sample.json](email.sample.json) and copy it over to a new file, e.g., [email.blog.json](email.blog.json). Edit it to your needs like shown. The email can include plain text in the **text** property, an HTML version in the **html** property or both.
+
+
 ### Send emails using the CLI
 
-To send an email, invoke the action and pass in the JSON object with the email properties. Use [email.sample.json](email.sample.json) and copy it over to a new file, e.g., **email.json**. Edit it to your needs. Thereafter, send the email by [invoking the action](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-cli-plugin-functions-cli#cli_action_invoke):
+Once you or your app have composed an email object, send the email by [invoking the action](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-cli-plugin-functions-cli#cli_action_invoke) using the IBM Cloud CLI:
 
 ```sh
 ibmcloud fn action invoke cloudmailer/sendEmail -r  -P email.json 

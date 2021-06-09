@@ -1,0 +1,8 @@
+{"email":{
+            "sender": "Henrik Loeser <henrik@example.com>",
+            "receiver": "data-henrik@example.com",
+            "subject": "Sample email for blog post",
+	        "text": "see the HTML text",
+            "html": "<html><h1>Hello world!</h1>Check out the <a href=\"https://github.com/IBM-Cloud/cloudmailer\">code on GitHub</a>.<h3>Let's talk emails</h3>To receive emails, someone has to send them.</html>"
+}
+}
