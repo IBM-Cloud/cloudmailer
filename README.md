@@ -14,13 +14,15 @@ Use the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started
 ibmcloud fn deploy -m Cloudmailer.yaml
 ```
 
-Copy over [smtp_config.sample.json](smtp_config.sample.json) to, e.g., **smtp_config.sendgrid.json**. Then adapt the file and use it to set the SMTP configuration as default:
+Copy over [smtp_config.sample.json](smtp_config.sample.json) to, e.g., **smtp_config.sendgrid.json**. Then adapt the file (see [SMTP server configuration](#smtp-server-configuration)) and use it to set the SMTP configuration as default:
 
 ```sh
 ibmcloud fn action update cloudmailer/sendEmail   -P smtp_config.sendgrid.json
 ```
 
 Be aware that typically the port 25 is blocked. Many email providers are using ports like 465 or 587.
+
+Instead of using the IBM Cloud CLI, you can also go to the [IBM Cloud Functions portal](https://cloud.ibm.com/functions/) and create the action there. Use the source from [smtp_email.js](smtp_email.js) for the action.
 
 ## Send emails
 
@@ -51,7 +53,7 @@ curl -X POST --url 'https://us-south.functions.cloud.ibm.com/api/v1/namespaces/0
 ```
 ### Expose the sendMail action as web action
 
-Another option is to turn the action into a web action. See the [IBM Cloud Functions documentation on web actions](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-actions_web) for details.
+Another option is to turn the action into a web action. See the [IBM Cloud Functions documentation on web actions](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-actions_web) for details. You should secure the web action with one of the offered methods, so that only authorized users can send emails.
 
 ## SMTP server configuration
 Some notes on common scenarios.
