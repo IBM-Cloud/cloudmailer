@@ -6,6 +6,8 @@ The following screenshot shows an email based on [this sample properties](email.
 
 ![sample email](images/20210609_Sample_Email.png)
 
+See the blog post [A Serverless Function for Sending Emails on IBM Cloud](https://www.ibm.com/cloud/blog/a-serverless-function-for-sending-emails-on-ibm-cloud) for some background and more links.
+
 ## Deploy
 
 Use the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started) and the [Cloud Functions plugin](https://cloud.ibm.com/docs/cli?topic=cloud-functions-cli-plugin-functions-cli) to deploy the action. Log in to IBM Cloud, [set the namespace](https://cloud.ibm.com/docs/cli?topic=cloud-functions-cli-plugin-functions-cli#cli_namespace_target) and then run:
