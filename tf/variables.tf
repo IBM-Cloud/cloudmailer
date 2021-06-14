@@ -1,5 +1,5 @@
 variable "basename" {
-  description = "Project name used for package and more"
+  description = "Project name used for Functions IAM namespace and more"
   default     = "cloudmailer"
 }
 

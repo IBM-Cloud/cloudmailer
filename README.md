@@ -29,23 +29,32 @@ Instead of using the IBM Cloud CLI, you can also go to the [IBM Cloud Functions 
 
 ### Using Terraform
 
-Go into the [tf](tf) directory. You may want to adapt the [provider configuration file](tf/provider.tf) to match your overall environment. Either change [tf/variables.tf](tf/variables.tf) or better override some values in a separate **terraform.tfvars** file. There, you may want to set the IBM Cloud API key to use and change the SMTP server configuration. Set the variable **server_config** similar to shown in the file **variables.tf**.
+Go into the [tf](tf) directory. You may want to adapt the [provider configuration file](tf/provider.tf) to match your overall environment. Either change [tf/variables.tf](tf/variables.tf) or better override some values in a separate **terraform.tfvars** file. There, you may want to set the IBM Cloud API key to use and change the SMTP server configuration. Set the variable **server_config** similar to shown in the file **variables.tf**, e.g., for SendGrid:
 
-Then, initialize Terraform:
-```sh
-terraform init
+```
+server_config= <<EOF
+   [ 
+      {
+        "key":"server",
+        "value": {
+            "host": "smtp.sendgrid.net",
+            "port" : 465,
+            "id": "apikey",
+            "password": "your-api-key"
+        }
+      }
+    ]
+
+EOF
+
 ```
 
-Thereafter, you may want to check that everything will be applied ok:
-```sh
-terraform plan
-```
-
-To deploy, run:
+Then, initialize Terraform the usual way with `terraform init`, check that everything will be applied ok by `terraform plan`. Finally, to deploy, run:
 ```sh
 terraform deploy
 ```
 
+It will create a new IAM namespace in IBM Cloud Functions and the action **sendEmail** in the package **cloudmailer**.
 
 ## Send emails
 
