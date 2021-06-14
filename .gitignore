@@ -1,4 +1,10 @@
+# configuration
 !email.sample.json
 !smtp_config.sample.json
 email*.json
 smtp_config*.json
+
+# Terraform
+*.tfvars
+.terraform
+*.tfstate*

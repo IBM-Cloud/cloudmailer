@@ -8,6 +8,7 @@ The following screenshot shows an email based on [this sample properties](email.
 
 ## Deploy
 
+### Using the IBM Cloud CLI
 Use the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-getting-started) and the [Cloud Functions plugin](https://cloud.ibm.com/docs/cli?topic=cloud-functions-cli-plugin-functions-cli) to deploy the action. Log in to IBM Cloud, [set the namespace](https://cloud.ibm.com/docs/cli?topic=cloud-functions-cli-plugin-functions-cli#cli_namespace_target) and then run:
 
 ```sh
@@ -23,6 +24,26 @@ ibmcloud fn action update cloudmailer/sendEmail   -P smtp_config.sendgrid.json
 Be aware that typically the port 25 is blocked. Many email providers are using ports like 465 or 587.
 
 Instead of using the IBM Cloud CLI, you can also go to the [IBM Cloud Functions portal](https://cloud.ibm.com/functions/) and create the action there. Use the source from [smtp_email.js](smtp_email.js) for the action.
+
+### Using Terraform
+
+Go into the [tf](tf) directory. You may want to adapt the [provider configuration file](tf/provider.tf) to match your overall environment. Either change [tf/variables.tf](tf/variables.tf) or better override some values in a separate **terraform.tfvars** file. There, you may want to set the IBM Cloud API key to use and change the SMTP server configuration. Set the variable **server_config** similar to shown in the file **variables.tf**.
+
+Then, initialize Terraform:
+```sh
+terraform init
+```
+
+Thereafter, you may want to check that everything will be applied ok:
+```sh
+terraform plan
+```
+
+To deploy, run:
+```sh
+terraform deploy
+```
+
 
 ## Send emails
 
