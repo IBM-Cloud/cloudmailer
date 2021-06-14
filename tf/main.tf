@@ -13,7 +13,7 @@ resource "ibm_function_package" "cloudmailer" {
 }
 
 resource "ibm_function_action" "sendEmail" {
-  name      = "cloudmailer/sendEmail"
+  name      = "${ibm_function_package.cloudmailer.name}/sendEmail"
   namespace = ibm_function_namespace.namespace.name
 
   exec {

@@ -51,7 +51,7 @@ EOF
 
 Then, initialize Terraform the usual way with `terraform init`, check that everything will be applied ok by `terraform plan`. Finally, to deploy, run:
 ```sh
-terraform deploy
+terraform apply
 ```
 
 It will create a new IAM namespace in IBM Cloud Functions and the action **sendEmail** in the package **cloudmailer**.
