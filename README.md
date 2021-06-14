@@ -6,6 +6,8 @@ The following screenshot shows an email based on [this sample properties](email.
 
 ![sample email](images/20210609_Sample_Email.png)
 
+See the blog post [A Serverless Function for Sending Emails on IBM Cloud](https://www.ibm.com/cloud/blog/a-serverless-function-for-sending-emails-on-ibm-cloud) for some background and more links.
+
 ## Deploy
 
 ### Using the IBM Cloud CLI
