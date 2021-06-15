@@ -22,7 +22,7 @@ variable "ibmcloud_api_key" {
 
 }
 
-variable "server_config"{
+variable "server_config" {
   type= string
   default= <<EOF
     [ 
@@ -37,4 +37,29 @@ variable "server_config"{
       }
     ]
 EOF
+
+}
+
+variable "web_action_config" {
+  type = string
+  default = "[]"
+
+// use a value like this to expose the action as
+// web action and set a password
+/*
+    default = <<EOF
+    [
+      {
+        "key": "web-export",
+        "value": true
+      },
+      {
+        "key": "require-whisk-auth",
+        "value": "your-web-secret"
+      }
+    ]
+EOF
+
+*/
+
 }

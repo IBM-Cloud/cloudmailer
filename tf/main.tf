@@ -20,5 +20,8 @@ resource "ibm_function_action" "sendEmail" {
     kind = "nodejs:12"
     code = file("../smtp_email.js")
   }
+  publish = true
   user_defined_parameters = var.server_config
+  
+  user_defined_annotations = var.web_action_config
 }

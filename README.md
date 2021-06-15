@@ -56,6 +56,9 @@ terraform apply
 
 It will create a new IAM namespace in IBM Cloud Functions and the action **sendEmail** in the package **cloudmailer**.
 
+To expose the action as secured web action, see the comments in [tf/variables.tf](tf/variables.tf). See the section on [exposing the sendMail action as web action](#expose-the-sendmail-action-as-web-action) below for further details.
+
+
 ## Send emails
 
 To send an email, invoke the action and pass in the JSON object with the email properties. Use [email.sample.json](email.sample.json) and copy it over to a new file, e.g., [email.blog.json](email.blog.json). Edit it to your needs like shown. The email can include plain text in the **text** property, an HTML version in the **html** property or both.
@@ -86,6 +89,13 @@ curl -X POST --url 'https://us-south.functions.cloud.ibm.com/api/v1/namespaces/0
 ### Expose the sendMail action as web action
 
 Another option is to turn the action into a web action. See the [IBM Cloud Functions documentation on web actions](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-actions_web) for details. You should secure the web action with one of the offered methods, so that only authorized users can send emails.
+
+Once deployed, you can test the REST API using **curl**. A call would look like this with the email read from a file again:
+
+```sh
+curl -X POST https://us-south.functions.appdomain.cloud/api/v1/web/d1ee1c70-xxxx-yyyy-zzzz5-000a41115d3e/cloudmailer/sendEmail.json -H  "X-Require-Whisk-Auth: your-web-secret"  -H "Content-Type: application/json" --data @email_to_send.json
+```
+
 
 ## SMTP server configuration
 Some notes on common scenarios.
